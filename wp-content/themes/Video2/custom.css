@@ -1,0 +1,64 @@
+/*
+File:			custom.css
+Description:	Custom styles for Your Theme
+
+HOW TO USE THIS FILE:
+
+Override any class you want and it will change default styling to suit your needs.
+
+For example, if you wish to change the default text blog title to grey, you would add the 
+following declarations to this file:
+
+	#header .blog-title a{ background:#cccccc }     <--- This makes blog title background grey
+
+*/
+
+/********************************CSS for front page  **************************/
+.clearfix{clear:both;}
+/********************************CSS for screen size bigger than 953px  **************************/
+@media screen and (min-width: 953px) { 
+	.mobile_style{display:none;}
+	
+	.normal_style{background-color:#563d7c;height:45px;width:100%;}
+	.normail_style_menu{width:90%;margin:auto;}
+	.normal_style li{width:100px;float:left;line-height:45px;list-style:none;}
+	.normal_style li a{color:white; }
+	.normal_style li a:hover{text-decoration:none;}
+}
+
+/********************************CSS for screen size smaller than 953px  **************************/
+@media screen and (max-width: 953px) { 
+
+.normal_style{display:none;}
+ .navbar-toggle .icon-bar{background-color:#563d7c;}
+ .header a{background: center center no-repeat transparent;display: block;width: 40px;height: 40px;position: absolute;top: 0;left: 10px;}
+ 
+.top_nav{background-color:#563d7c;}
+header{text-align:center; height:55px;position:relative;}
+header .navbar-toggle{float:left;width:10%;background:none repeat scroll 0 0 rgba(0, 0, 0, 0);border:medium none;display:block;left:30px;margin:0;padding:0;position:absolute;top:11px;}
+header .logo-wrapper{height:55px;padding:2px 0;width:70%;float:right;}
+header .logo{color:#ffffff;display:inline-block;height:45px;margin:0;line-height:40px;padding:0;}
+#right-menu{display:block;height:55px;line-height:55px;position:absolute;right:10px;top:0;width:30%;float:right;}
+.logo img{width:125px;}	
+}
+.single-video{margin-bottom:10px;}
+.video_type_block{text-align: center;}
+.video_type_block a img{width:100%;height:auto;}
+.video_desc{position:relative;background-color:gray;}
+.video_desc a{color:white;font-weight:bold;}
+.video_desc p{padding:5px 0px;}
+#gcw_rank li{list-style:none;margin-bottom:5px;}
+#gcw_rank{padding-left:0px;}
+#gcw_rank li span{text-align:center;width:15px;height:18px;background-color:#D6B892;color:white;display:inline-block;}
+#gcw_rank li .gcw_rank_key_1,#gcw_rank li .gcw_rank_key_2,#gcw_rank li .gcw_rank_key_3{background-color:#CE4E35;}
+.zimu-list .title_letter{background:none repeat scroll 0 0 #fafafa;   border: 1px solid #e5e5e5;border-radius: 4px;color: #333;float: left;font-size: 16px;height: 30px;line-height: 30px;margin: 2px 0 0 8px;text-align: center;width: 37px;}
+.zimu{display:block;overflow:hidden;padding:10px 0;}
+#zimu_content{padding-left:0px;}
+#zimu_content .list-1{background-color:#f5f5f5;}
+#zimu_content .list-0{background-color:#ebebeb;}
+.over{background:none repeat scroll 0 0 #563d7c !important;color:white !important;}
+.zimu-list .limittext{height:60px;  display: block;float: left;margin-left: 15px;overflow: hidden;padding: 2px 0;}
+.zimu-list .limittext a{ color: #29a5c9;font-size: 14px;line-height: 30px;margin-right: 10px;}
+.zimu-list{border-top: 1px solid #fff;display: block;height: auto;overflow: hidden;padding: 10px 0;position: relative;}
+.zimu a{display:block;border:1px solid #e7e7e7;color:#4b4f51;float:left;font-size: 14px;margin-right: 5px;padding: 5px 10px;text-align: center;}
+ /********************************front page css end  **************************/
