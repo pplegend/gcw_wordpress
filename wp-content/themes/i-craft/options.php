@@ -77,11 +77,11 @@ function optionsframework_options() {
 
 	// Background Defaults
 	$background_defaults = array(
-		'color' => '',
-		'image' => '',
-		'repeat' => 'repeat',
+		'color' => '#cfd0d2',
+		'image' => get_template_directory_uri() . '/images/bg7.jpg',
+		'repeat' => '',
 		'position' => 'top center',
-		'attachment'=>'scroll' );
+		'attachment'=> 'fixed' );
 
 	// Typography Defaults
 	$typography_defaults = array(
@@ -170,7 +170,7 @@ function optionsframework_options() {
 		'name' => __( 'Primary Color', 'i-craft' ),
 		'desc' => __( 'Choose your theme color', 'i-craft' ),
 		'id' => 'itrans_primary_color',
-		'std' => '',
+		'std' => '#dd3333',
 		'type' => 'color'
 	);
 
@@ -215,6 +215,14 @@ function optionsframework_options() {
 		'type' => 'background'
 	);
 	
+	
+	$options[] = array(
+		'name' => __('Background Image Size : Cover', 'i-craft'),
+		'desc' => __('Cover background image', 'i-craft'),
+		'id' => 'bg_cover',
+		'std' => '',
+		'type' => 'checkbox');	
+			
 	$options[] = array(
 		'name' => __('Additional style', 'i-craft'),
 		'desc' => __('add extra style(CSS) codes here', 'i-craft'),
@@ -243,9 +251,9 @@ function optionsframework_options() {
 		'type' => 'text');
 		
 	$options[] = array(
-		'name' => __('Pinterest', 'i-craft'),
+		'name' => __('Youtube', 'i-craft'),
 		'desc' => __('', 'i-craft'),
-		'id' => 'itrans_social_pinterest',
+		'id' => 'itrans_social_youtube',
 		'std' => '',
 		'type' => 'text');	
 		
@@ -295,35 +303,35 @@ function optionsframework_options() {
 		'name' => __('Slide1 Title', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide1_title',
-		'std' => '',
+		'std' => 'i-craft, Exclusive WooCommerce Features',
 		'type' => 'text');
 
 	$options[] = array(
 		'name' => __('Slide1 Description', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide1_desc',
-		'std' => '',
+		'std' => 'To start setting up i-craft go to appearance &gt; Theme Options. Make sure you have installed recommended plugin &#34;TemplatesNext Toolkit&#34; by going appearance > install plugin.',
 		'type' => 'textarea');
 
 	$options[] = array(
 		'name' => __('Slide1 Link text', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide1_linktext',
-		'std' => '',
+		'std' => 'Know More',
 		'type' => 'text');
 		
 	$options[] = array(
 		'name' => __('Slide1 Link URL', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide1_linkurl',
-		'std' => '',
+		'std' => '#',
 		'type' => 'text');		
 
 	$options[] = array(
 		'name' => __('Slide1 Image', 'i-craft'),
 		'desc' => __('Ideal image size width: 1200px and height: 440px', 'i-craft'),
 		'id' => 'itrans_slide1_image',
-		'std' => '',
+		'std' => get_template_directory_uri() . '/images/slide1.jpg',
 		'type' => 'upload');
 
 
@@ -331,35 +339,35 @@ function optionsframework_options() {
 		'name' => __('Slide2 Title', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide2_title',
-		'std' => '',
+		'std' => 'Live Cart And Product Search',
 		'type' => 'text');
 
 	$options[] = array(
 		'name' => __('Slide2 Description', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide2_desc',
-		'std' => '',
+		'std' => 'Optional live cart update on main navigation. Optional login menu item on main navigation. Toggle site search or product search',
 		'type' => 'textarea');
 
 	$options[] = array(
 		'name' => __('Slide2 Link text', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide2_linktext',
-		'std' => '',
+		'std' => 'Know More',
 		'type' => 'text');
 		
 	$options[] = array(
 		'name' => __('Slide2 Link URL', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide2_linkurl',
-		'std' => '',
+		'std' => '#',
 		'type' => 'text');		
 
 	$options[] = array(
 		'name' => __('Slide2 Image', 'i-craft'),
 		'desc' => __('Ideal image size width: 1200px and height: 440px', 'i-craft'),
 		'id' => 'itrans_slide2_image',
-		'std' => '',
+		'std' => get_template_directory_uri() . '/images/slide2.jpg',
 		'type' => 'upload');
 
 
@@ -368,35 +376,35 @@ function optionsframework_options() {
 		'name' => __('Slide3 Title', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide3_title',
-		'std' => '',
+		'std' => 'Product Carousel Shortcodes',
 		'type' => 'text');
 
 	$options[] = array(
 		'name' => __('Slide3 Description', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide3_desc',
-		'std' => '',
+		'std' => 'i-craft comes with plugin &#34;TemplatesNext Toolkit&#34; giving you ability to create product or category carousel shortcodes ',
 		'type' => 'textarea');
 
 	$options[] = array(
 		'name' => __('Slide3 Link text', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide3_linktext',
-		'std' => '',
+		'std' => 'Know More',
 		'type' => 'text');
 		
 	$options[] = array(
 		'name' => __('Slide3 Link URL', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide3_linkurl',
-		'std' => '',
+		'std' => '#',
 		'type' => 'text');		
 
 	$options[] = array(
 		'name' => __('Slide3 Image', 'i-craft'),
 		'desc' => __('Ideal image size width: 1200px and height: 440px', 'i-craft'),
 		'id' => 'itrans_slide3_image',
-		'std' => '',
+		'std' => get_template_directory_uri() . '/images/slide3.jpg',
 		'type' => 'upload');
 
 
@@ -405,35 +413,35 @@ function optionsframework_options() {
 		'name' => __('Slide4 Title', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide4_title',
-		'std' => '',
+		'std' => 'Individual Page Customization',
 		'type' => 'text');
 
 	$options[] = array(
 		'name' => __('Slide4 Description', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide4_desc',
-		'std' => '',
+		'std' => 'Customize your pages with meta options.',
 		'type' => 'textarea');
 
 	$options[] = array(
 		'name' => __('Slide4 Link text', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide4_linktext',
-		'std' => '',
+		'std' => 'Know More',
 		'type' => 'text');
 		
 	$options[] = array(
 		'name' => __('Slide4 Link URL', 'i-craft'),
 		'desc' => __('', 'i-craft'),
 		'id' => 'itrans_slide4_linkurl',
-		'std' => '',
+		'std' => '#',
 		'type' => 'text');		
 
 	$options[] = array(
 		'name' => __('Slide4 Image', 'i-craft'),
 		'desc' => __('Ideal image size width: 1200px and height: 440px', 'i-craft'),
 		'id' => 'itrans_slide4_image',
-		'std' => '',
+		'std' => get_template_directory_uri() . '/images/slide4.jpg',
 		'type' => 'upload');
 		
 		
@@ -475,6 +483,13 @@ function optionsframework_options() {
 		'name' => __('Hide Topnav Cart', 'i-craft'),
 		'desc' => __('Hide cart from top nav', 'i-craft'),
 		'id' => 'hide_cart',
+		'std' => '',
+		'type' => 'checkbox');
+		
+	$options[] = array(
+		'name' => __('Turn On Normal Search', 'i-craft'),
+		'desc' => __('Product only search will be turned off.', 'i-craft'),
+		'id' => 'normal_search',
 		'std' => '',
 		'type' => 'checkbox');
 		

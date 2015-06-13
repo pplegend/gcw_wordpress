@@ -6,7 +6,7 @@ function icraft_social_icons () {
 	
 	$socio_list = '';
 	$siciocount = 0;
-    $services = array ('facebook','twitter','pinterest','flickr','feed','instagram','googleplus');
+    $services = array ('facebook','twitter','youtube','flickr','feed','instagram','googleplus');
     
 		$socio_list .= '<ul class="social">';	
 		foreach ( $services as $service ) :
@@ -36,36 +36,35 @@ function icraft_ibanner_slider () {
 	$arrslidestxt = array();
 	$template_dir = get_template_directory_uri();
 	
+	$upload_dir = wp_upload_dir();
+	$upload_base_dir = $upload_dir['basedir'];
+	$upload_base_url = $upload_dir['baseurl'];	
+	
     for($slideno=1;$slideno<=4;$slideno++){
 			$strret = '';
-			$slide_title = esc_attr(of_get_option ('itrans_slide'.$slideno.'_title'));
-			$slide_desc = esc_attr(of_get_option ('itrans_slide'.$slideno.'_desc'));
-			$slide_linktext = esc_attr(of_get_option ('itrans_slide'.$slideno.'_linktext'));
-			$slide_linkurl = esc_url(of_get_option ('itrans_slide'.$slideno.'_linkurl'));
-			$slide_image = of_get_option ('itrans_slide'.$slideno.'_image');
+			$slide_title = esc_attr(of_get_option ('itrans_slide'.$slideno.'_title', 'Exclusive WooCommerce Features'));
+			$slide_desc = esc_attr(of_get_option ('itrans_slide'.$slideno.'_desc', 'To start setting up i-craft go to appearance &gt; Theme Options. Make sure you have installed recommended plugin &#34;TemplatesNext Toolkit&#34; by going appearance > install plugin.'));
+			$slide_linktext = esc_attr(of_get_option ('itrans_slide'.$slideno.'_linktext', 'Know More'));
+			$slide_linkurl = esc_url(of_get_option ('itrans_slide'.$slideno.'_linkurl', '#'));
+			$slide_image = of_get_option ('itrans_slide'.$slideno.'_image', get_template_directory_uri() . '/images/slide'.$slideno.'.jpg');
 			
 			$slider_image_id = icraft_get_attachment_id_from_url( $slide_image );			
 			$slider_resized_image = wp_get_attachment_image( $slider_image_id, "icraft-slider-thumb" );
-	
+			
 			if (!$slide_linktext)
 			{
 				$slide_linktext="Read more";
-			}
+			}			
 			
 			if ($slide_title) {
 
 				if( $slide_image!='' ){
-					
-					$upload_dir = wp_upload_dir();
-					$upload_base_dir = $upload_dir['basedir'];
-					$upload_base_url = $upload_dir['baseurl'];
 					if( file_exists( str_replace($upload_base_url,$upload_base_dir,$slide_image) ) ){
-						//$strret .= '<div class="da-img"><img src="'.$slide_image.'" alt="'.$slide_title.'" /></div>';
 						$strret .= '<div class="da-img">' . $slider_resized_image .'</div>';
 					}
 					else
 					{
-						$slide_image = $template_dir.'/images/no-image.png';
+						$slide_image = $template_dir.'/images/slide'.$slideno.'.jpg';
 						$strret .= '<div class="da-img noslide-image"><img src="'.$slide_image.'" alt="'.$slide_title.'" /></div>';					
 					}
 				}
@@ -115,9 +114,7 @@ function icraft_ibanner_slider () {
 						//bloginfo( 'name' );
 			echo of_get_option('itrans_slogan');
 		} 
-		//else {
-			//printf( __( 'Welcome To ', 'i-craft' ) );  bloginfo( 'name' );
-		//}
+		
         echo '        </h1>';
 		echo ' 		  <h2>';
 			    		//bloginfo( 'description' );

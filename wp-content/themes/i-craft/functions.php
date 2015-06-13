@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * i-craft functions and definitions
  *
@@ -29,6 +29,7 @@
  */
 if ( ! isset( $content_width ) )
 	$content_width = 604;
+
 
 /**
  * i-craft only works in WordPress 3.6 or later.
@@ -66,7 +67,7 @@ function icraft_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	add_editor_style( array( 'css/editor-style.css', 'fonts/genericons.css', icraft_fonts_url() ) );
+	//add_editor_style( array( 'css/editor-style.css', 'fonts/genericons.css', icraft_fonts_url() ) );
 
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
@@ -187,9 +188,7 @@ function icraft_scripts_styles() {
 	
 	// Loads JavaScript file with functionality specific to i-craft.
 	wp_enqueue_script( 'icraft-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '2013-07-18', true );
-	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '2013-07-18', true );
 	wp_enqueue_script( 'myjs-script', get_template_directory_uri() . '/js/myjs.js', array( 'jquery' ), '2013-07-18', true );
-	
 	
 	$blog_layout = of_get_option('itrans_blog_layout');
 
@@ -210,14 +209,12 @@ function icraft_scripts_styles() {
 	
 	// Add owl-carusel theme
 	wp_enqueue_style( 'owl-carousel-theme', get_template_directory_uri() . '/css/owl.theme.css', array(), '2014-01-12' );	
-	
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '2014-01-12' );
 	// Add owl-carusel transition
 	wp_enqueue_style( 'owl-carousel-transitions', get_template_directory_uri() . '/css/owl.transitions.css', array(), '2014-01-12' );				
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '2014-01-12' );				
 	
 	// Loads our main stylesheet.
 	wp_enqueue_style( 'icraft-style', get_stylesheet_uri(), array(), '2013-07-18' );
-
 	
 	// blog posts layout style
 	if ( $blog_layout == 'twocol' ) {
@@ -229,9 +226,8 @@ function icraft_scripts_styles() {
 	wp_style_add_data( 'icraft-ie', 'conditional', 'lt IE 9' );
 	
 	
-	wp_enqueue_style( 'custom-stylesheet', get_template_directory_uri() . '/custom.css', array(), '2014-03-11' );
-	
 	wp_enqueue_style( 'itrans-extra-stylesheet', get_template_directory_uri() . '/css/extra-style.css', array(), '2014-03-11' );
+	wp_enqueue_style( 'custom-stylesheet', get_template_directory_uri() . '/custom.css', array(), '2014-03-11' );
 	$custom_css = htmlspecialchars_decode(of_get_option( 'itrans_extra_style'));
 	
 	if ( $custom_css ) {
@@ -268,40 +264,6 @@ function icraft_layout_body_class( $classes ) {
 
 
 /**
- * Filter the page title.
- *
- * Creates a nicely formatted and more specific title element text for output
- * in head of document, based on current view.
- *
- * @since i-craft 1.0
- *
- * @param string $title Default title text for current view.
- * @param string $sep   Optional separator.
- * @return string The filtered title.
- */
-function icraft_wp_title( $title, $sep ) {
-	global $paged, $page;
-
-	if ( is_feed() )
-		return $title;
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'i-craft' ), max( $paged, $page ) );
-
-	return $title;
-}
-add_filter( 'wp_title', 'icraft_wp_title', 10, 2 );
-
-/**
  * Register two widget areas.
  *
  * @since i-craft 1.0
@@ -323,13 +285,12 @@ function icraft_widgets_init() {
 		'name'          => __( 'Main Sidebar Widget Area', 'i-craft' ),
 		'id'            => 'sidebar-2',
 		'description'   => __( 'Appears on posts and pages in the sidebar.', 'i-craft' ),
-		'before_widget' => '<div class="widget">',
-		'after_widget'  => '</div>',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
-	 register_sidebar(array(
+     register_sidebar(array(
 	    'name' => "hottest videos",
 		'before_widget' => '<div class="widget">',
 		'after_widget' => '</div>',
@@ -835,7 +796,10 @@ function icraft_register_required_plugins() {
 
     tgmpa( $plugins, $config );
 
+
+
 }
+
 //----------------------------------------------------------------------//
 // Initiate the plugin to add custom post type of "places" and "events"
 //----------------------------------------------------------------------//

@@ -13,7 +13,7 @@
 		<footer id="colophon" class="site-footer" role="contentinfo">
         	<div class="footer-bg clearfix">
                 <div class="widget-wrap">
-                    <?php //get_sidebar( 'main' ); ?>
+                    <?php get_sidebar( 'main' ); ?>
                 </div>
 			</div>
 			<div class="site-info">

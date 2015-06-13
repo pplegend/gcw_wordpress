@@ -15,6 +15,9 @@ following declarations to this file:
 
 /********************************CSS for front page  **************************/
 .clearfix{clear:both;}
+body{
+	overflow: hidden;
+}
 /********************************CSS for screen size bigger than 953px  **************************/
 @media screen and (min-width: 953px) { 
 	.mobile_style{display:none;}
@@ -67,4 +70,24 @@ header .logo{color:#ffffff;display:inline-block;height:45px;margin:0;line-height
 .video-content .video-frame{
   text-align:center;
   margin:0 auto;
+}
+.video-content{
+	width: 100%;
+}
+.iheader h1{
+ 	line-height:50px;
+ 	font-size:25px;
+}
+.iheader{
+	height: 50px;
+}
+.titlebar{
+	padding-right: 0;
+}
+	
+.single-videos .nx-breadcrumb{
+	display: none;
+}
+.single-videos .site-main{
+	padding-top: 20px;
 }

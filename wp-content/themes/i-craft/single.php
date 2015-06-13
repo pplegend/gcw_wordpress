@@ -13,8 +13,9 @@ get_header(); ?>
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
-			<?php $post_type = get_post_type(get_the_ID()); ?>
+
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            
                 <div class="meta-img">
                 <?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
                     <div class="entry-thumbnail">
@@ -30,20 +31,24 @@ get_header(); ?>
                 </div>
                 
                 <div class="post-mainpart">    
+                    <header class="entry-header">
+                        <div class="entry-meta">
+                            <?php icraft_entry_meta(); ?>
+                            <?php edit_post_link( __( 'Edit', 'i-craft' ), '<span class="edit-link">', '</span>' ); ?>
+                        </div><!-- .entry-meta -->
+                    </header><!-- .entry-header -->
                 
-                    <div class="entry-content video-content">
-					   <div class="container">
-					     <div class="row">
-							<?php echo get_the_content(); ?>
-						 </div>
-                        
-					   </div>
-						
+                    <div class="entry-content">
+                        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'i-craft' ) ); ?>
                         <?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'i-craft' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
                     </div><!-- .entry-content -->
 
-                </div>				  
-		
+                	<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
+                    	<footer class="entry-meta">
+                            <?php get_template_part( 'author-bio' ); ?>
+                    	</footer><!-- .entry-meta -->
+					<?php endif; ?>
+                </div>
             </article><!-- #post -->    
     
 

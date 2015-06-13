@@ -13,6 +13,7 @@
 
 $background = of_get_option('itrans_background_style');
 $hide_cart = of_get_option('hide_cart');
+$bg_cover = of_get_option('bg_cover', '1');
 				
 $bacground_style = '';
 
@@ -29,6 +30,19 @@ if ($background) {
         	$bacground_style .= 'background-'.$i .': '.$param.'; ' ;
         }
    	}
+	
+	if( $bg_cover == '1' )
+	{
+		$bacground_style .= 'background-size: cover;' ;			
+	}
+	
+	
+} else
+{
+	$bacground_style .= 'background-image: URL('.get_template_directory_uri() . '/images/bg7.jpg'.'); ' ;
+	$bacground_style .= 'background-repeat: no-repeat;' ;
+	$bacground_style .= 'background-size: cover;' ;	
+	$bacground_style .= 'background-attachment: fixed;' ;		
 }
 
 global $post; 
@@ -271,5 +285,5 @@ global $post;
         </div>
         
 		<?php endif; ?>
-		<div id="main" class="site-main">
+		<div id="main" class="site-main container-fluid">
 
